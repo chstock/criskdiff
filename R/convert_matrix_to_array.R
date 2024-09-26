@@ -7,7 +7,7 @@
 #'
 #' @export
 #' @references
-#' \insertRef{Freedman2008}{sriskdiff}
+#' \insertRef{Freedman2008}{criskdiff}
 #'
 #' @examples
 #' matrix(

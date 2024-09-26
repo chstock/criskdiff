@@ -1,4 +1,4 @@
-Package: sriskdiff
+Package: criskdiff
 Title: Estimation and Inference for the Common Risk Difference in Stratified 2x2 Tables
 Version: 0.0.1
 Authors@R: c(
