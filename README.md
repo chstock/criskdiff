@@ -3,6 +3,6 @@
 <!-- badges: end -->
 
 # criskdiff
-Estimation and Inference for the Common Risk Difference in Stratified 2x2 Tables.
+Estimation and Inference for the Common Risk Difference from Stratified 2x2 Tables.
 
 
