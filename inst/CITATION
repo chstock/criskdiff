@@ -1,11 +1,13 @@
-bibentry(
-  bibtype  = "Article",
-  title    = ,
-  author   = ,
-  journal  = ,
-  year     = ,
-  volume   = ,
-  number   = ,
-  pages    = ,
-  doi      =
+bibentry(bibtype = "Misc",
+  title = "{sriskdiff}: {E}stimation and {I}nference for the {C}ommon {R}isk {D}ifference in {S}tratified {2x2} {T}ables",
+  author = c(person(given = "Christian", family = "Stock")),
+  year = "2024",
+  note = "{R} package, version 0.0.1.
+  header = "To cite 'sriskdiff' in publications use:",
+  textVersion = paste(
+    "Stock C (2024).",
+    "sriskdiff: Estimation and Inference for the Common Risk Difference in Stratified 2x2 Tables.",
+    "R package, version 0.0.1"
+  ),
+  encoding = "UTF-8"
 )
