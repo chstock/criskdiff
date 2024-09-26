@@ -1,2 +1,5 @@
 ^sriskdiff\.Rproj$
 ^\.Rproj\.user$
+^LICENSE\.md$
+^\.lintr$
+^data-raw$

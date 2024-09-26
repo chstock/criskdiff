@@ -4,7 +4,7 @@
 \name{sriskdiff-package}
 \alias{sriskdiff}
 \alias{sriskdiff-package}
-\title{sriskdiff: Estimation and Inference for the Common Risk Difference in Stratified 2x2 Tables.}
+\title{sriskdiff: Estimation and Inference for the Common Risk Difference in Stratified 2x2 Tables}
 \description{
 Estimation and Inference for the Common Risk Difference in Stratified 2x2 Tables.
 }
