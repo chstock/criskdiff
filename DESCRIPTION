@@ -1,14 +1,17 @@
 Package: sriskdiff
-Title: What the Package Does (One Line, Title Case)
+Title: Estimation and Inference for the Common Risk Difference in Stratified 2x2 Tables.
 Version: 0.0.0.9000
 Authors@R: c(
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID")),
-    person(, role = "ctb")
+  person(
+    given = "Christian",
+    family = "Stock",
+    role = c("aut", "cre"),
+    email = "christian.stock@boehringer-ingelheim.com",
+    comment = c(ORCID = "0000-0002-3493-3234")
   )
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+  )
+Description: Estimation and Inference for the Common Risk Difference in Stratified 2x2 Tables.
+License: `use_mit_license()`
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.1
