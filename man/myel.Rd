@@ -14,15 +14,23 @@ A data frame with 53940 rows and 10 variables
 data(myel)
 }
 \description{
-An array containing data from a randomized trial carried out in \eqn{K=21} institutions.
-\insertCite{parseRd;Klingenberg2014}{sriskdiff}
+An array containing data from a randomized controlled trial used in
+\insertCite{Klingenberg2014;textual}{criskdiff}.
 }
 \details{
-\itemize{
-\item price.
+The trial compared two chemotherapy treatments with respect to survival
+(alive or dead by the end of the study; i.e. a binary endpoint) in patients
+with multiple myeloma.
+It was was carried out in \eqn{K=21} institutions (strata), with an average
+of 7.4 patients per institution.
+
+\describe{
+\item{group}{First item}
+\item{outcome}{Second item}
+\item{stratum}{Second item}
 }
 }
 \references{
-\insertRef{Klingenberg2014}{sriskdiff}
+\insertAllCited{}
 }
 \keyword{datasets}

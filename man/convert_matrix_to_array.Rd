@@ -13,7 +13,7 @@ convert_matrix_to_array(mat)
 An array
 }
 \description{
-Convert matrix to array
+A short description...
 }
 \examples{
 matrix(
@@ -28,5 +28,5 @@ matrix(
 
 }
 \references{
-\insertRef{Freedman2008}{sriskdiff}
+\insertRef{Freedman2008}{criskdiff}
 }

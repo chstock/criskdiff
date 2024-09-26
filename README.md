@@ -22,7 +22,7 @@ if (!require("remotes")) install.packages("remotes")
 remotes::install_github("chstock/criskdiff")
 ```
 
-## Example
+## Getting started
 
 …
 

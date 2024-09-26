@@ -1,4 +1,8 @@
+#' @title
 #' Convert matrix to array
+#' 
+#' @description
+#' A short description...
 #'
 #' @param mat A matrix
 #'
@@ -38,7 +42,7 @@ convert_matrix_to_array <- function(mat) {
     dimnames = list(
       "group" = c("pbo", "act"),
       "outcome" = c("y", "n"),
-      "stratum" = seq_along(1:nrow(mat))
+      "stratum" = seq_len(nrow(mat))
     )
   )
 
