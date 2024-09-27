@@ -24,9 +24,10 @@ remotes::install_github("chstock/criskdiff")
 
 ## Getting started
 
-…
-
 ``` r
-#library(criskdiff)
-## basic example code
+library(criskdiff)
+data(myel)
+criskdiff_sato(myel)
+#           est          var           se          lcl          ucl         pval 
+#   0.057168322  0.006382032  0.079887623 -0.099408542  0.213745186  0.474232662
 ```

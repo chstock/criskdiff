@@ -2,7 +2,7 @@
 #' Common risk difference using Sato method
 #'
 #' @description
-#' Computes Mantel-Haenszel estimate of the common risk difference with
+#' Computes the Mantel-Haenszel estimate of the common risk difference with
 #' variance estimation according to \insertCite{Sato1989;textual}{criskdiff}.
 #'
 #' @param arr Array with 3 dimensions containing 2x2 tables, as returned by

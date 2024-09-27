@@ -7,7 +7,7 @@ output: github_document
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>",
+  comment = "# ",
   fig.path = "man/figures/README-",
   out.width = "100%"
 )
@@ -33,11 +33,10 @@ remotes::install_github("chstock/criskdiff")
 
 ## Getting started
 
-...
-
-```{r example}
-#library(criskdiff)
-## basic example code
+```{r example, echo=TRUE, eval=TRUE}
+library(criskdiff)
+data(myel)
+criskdiff_sato(myel)
 ```
 
 

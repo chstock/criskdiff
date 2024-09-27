@@ -28,7 +28,7 @@ and
 }
 }
 \description{
-Computes Mantel-Haenszel estimate of the common risk difference with
+Computes the Mantel-Haenszel estimate of the common risk difference with
 variance estimation according to \insertCite{Sato1989;textual}{criskdiff}.
 }
 \examples{
