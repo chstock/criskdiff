@@ -1,9 +1,10 @@
 #' @title
-#' Common risk difference using the Sato method
+#' Common risk difference using the Klingenberg method
 #'
 #' @description
 #' Computes the Mantel-Haenszel estimate of the common risk difference with
-#' variance estimation according to \insertCite{Sato1989;textual}{criskdiff}.
+#' variance estimation according to
+#' \insertCite{Klingenberg2014;textual}{criskdiff}.
 #'
 #' @param arr Array with 3 dimensions containing 2x2 tables, as returned by
 #'    \code{\link{convert_matrix_to_array}()}
@@ -29,13 +30,13 @@
 #' @references
 #'   \insertAllCited{}
 #'
-#' @seealso [convert_matrix_to_array()] and [criskdiff_klingenberg()].
+#' @seealso [convert_matrix_to_array()] and [criskdiff_sato()].
 #'
 #' @examples
 #' data(myel)
-#' criskdiff_sato(myel)
+#' criskdiff_klingenberg(myel)
 #'
-criskdiff_sato <- function(arr, alpha = 0.05) {
+criskdiff_klingenberg <- function(arr, alpha = 0.05) {
   # Check arguments
   assert_that(is.array(arr))
   assert_that(alpha > 0 & alpha < 1)
@@ -55,11 +56,11 @@ criskdiff_sato <- function(arr, alpha = 0.05) {
     MARGIN = 3,
     FUN = function(m) (m[1, 1] / m[1, 2]) - (m[2, 1] / m[2, 2])
   )
-
-  ## Common risk difference
+  
+  ## Common MH risk difference
   rho_mh_hat <- sum(w * rho_hat) / sum(w)
 
-  # Compute variance following Sato (1989)
+  # Compute confidence interval following Klingenberg (2014)
 
   P <- apply(
     X = arr,
@@ -73,7 +74,8 @@ criskdiff_sato <- function(arr, alpha = 0.05) {
       denom <- (n + m) ^ 2
       num / denom
     }
-  )
+  ) |>
+    sum()
 
   Q <- apply(
     X = arr,
@@ -85,29 +87,30 @@ criskdiff_sato <- function(arr, alpha = 0.05) {
       m <- tab[2, 2]
       (x * (m - y) / (m + n) + y * (n - x) / (m + n)) / 2
     }
-  )
-
-  denom <- apply(
-    X = arr,
-    MARGIN = 3,
-    FUN = function(tab) {
-      n <- tab[1, 2]
-      m <- tab[2, 2]
-      n * m / (n + m)
-    }
   ) |>
-    (\(x) sum(x) ^ 2)()
-
-  var_sato <- (rho_mh_hat * sum(P) + sum(Q)) / denom
+    sum()
+  
+  ## Common mid-p risk difference
+  rho_midp_hat <-
+    rho_mh_hat + 0.5 * stats::qchisq(1 - alpha, df = 1) * (P / sum(w) ^ 2)
+  
+  ## Margin of error
+  me <-
+    sqrt(rho_midp_hat ^ 2 - rho_mh_hat ^ 2 + stats::qchisq(1 - alpha, df = 1) *
+           Q / sum(w) ^ 2)
+  
+  ## Confidence interval
+  lcl <- rho_midp_hat - me
+  ucl <- rho_midp_hat + me
 
   # Return results
   return(c(
-    "est" = rho_mh_hat,
-    "var" = var_sato,
-    "se" = sqrt(var_sato),
-    "lcl" = rho_mh_hat - qnorm(1 - alpha / 2) * sqrt(var_sato),
-    "ucl" = rho_mh_hat + qnorm(1 - alpha / 2) * sqrt(var_sato),
-    "pval" =  2 * (1 - pnorm(abs(rho_mh_hat / sqrt(var_sato))))
+    "est" = rho_midp_hat,
+    "var" = NA,
+    "se" = me / qnorm(1 - alpha / 2), # <- to check
+    "lcl" = lcl,
+    "ucl" = ucl,
+    "pval" = NA
   ))
 
 }
