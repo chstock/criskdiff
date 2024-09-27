@@ -6,7 +6,7 @@
 #' variance estimation according to \insertCite{Sato1989;textual}{criskdiff}.
 #'
 #' @param arr Array with 3 dimensions containing 2x2 tables, as returned by
-#'    \code{\link{convert_matrix_to_array}}
+#'    \code{\link{convert_matrix_to_array}()}
 #' @param alpha Numeric of length 1, level \eqn{\alpha} to compute
 #'   \eqn{(1-\alpha)}-confidence intervals.
 #'

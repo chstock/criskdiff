@@ -10,18 +10,15 @@
 #' It was was carried out in \eqn{K=21} institutions (strata), with an average
 #' of 7.4 patients per institution.
 #'
-#'
-#' \describe{
-#'   \item{group}{First item}
-#'   \item{outcome}{Second item}
-#'   \item{stratum}{Second item}
-#' }
+#' The data was obtained from the source given below and processed via
+#' \code{\link{convert_matrix_to_array}()}.
 #'
 #' @docType data
 #' @keywords datasets
 #' @name myel
 #' @usage data(myel)
-#' @format A data frame with 53940 rows and 10 variables
+#' @format A 3-dimensional array as returned by
+#'   \code{\link{convert_matrix_to_array}()}
 #' @references
 #' \insertAllCited{}
 #' @source \url{https://sites.williams.edu/bklingen/files/2013/06/myel.txt}

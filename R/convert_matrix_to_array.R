@@ -14,7 +14,7 @@
 #'  \itemize{
 #'    \item Column 1 - Number of successes in group1,
 #'    \item Column 2 - Number of trials in group1,
-#'    \item Column 3 - Number of successes in group2, and 
+#'    \item Column 3 - Number of successes in group2, and
 #'    \item Column 4 - Number of trials in group2.
 #'  }
 #' @param group_names Character of length 2, indicating names of treatment
