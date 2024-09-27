@@ -38,6 +38,3 @@ library(criskdiff)
 data(myel)
 criskdiff_sato(myel)
 ```
-
-
-

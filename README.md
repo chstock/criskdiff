@@ -9,7 +9,7 @@
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 <!-- badges: end -->
 
-Estimation and Inference for the Common Risk Difference from Stratified
+Estimation and Inference for the Common Risk Difference from Stratified 
 2x2 Tables.
 
 ## Installation
