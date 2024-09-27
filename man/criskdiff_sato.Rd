@@ -2,21 +2,34 @@
 % Please edit documentation in R/criskdiff_sato.R
 \name{criskdiff_sato}
 \alias{criskdiff_sato}
-\title{Computing risk difference using Sato method}
+\title{Common risk difference using Sato method}
 \usage{
-criskdiff_sato(arr)
+criskdiff_sato(arr, alpha = 0.05)
 }
 \arguments{
-\item{arr}{array}
+\item{arr}{Array with 3 dimensions containing 2x2 tables, as returned by
+\code{\link{convert_matrix_to_array}}}
+
+\item{alpha}{Numeric of length 1, level \eqn{\alpha} to compute
+\eqn{(1-\alpha)}-confidence intervals.}
 }
 \value{
-results
+A numeric vector with the following elements:
+\itemize{
+\item \code{est} - the Mantel-Haenszel estimate of the common risk
+difference,
+\item \code{var} - the variance of \code{est},
+\item \code{se} - the standard error of \code{est},
+\item \code{lcl} - the lower \eqn{(1-\alpha)}-confidence interval limit,
+\item \code{ucl} - the upper \eqn{(1-\alpha)}-confidence interval limit,
+and
+\item \code{pval} - the p-value from the (two-sided) \emph{z}-test of
+\eqn{H_0:} risk difference \eqn{= 0} vs. risk difference \eqn{\ne 0}.
+}
 }
 \description{
-Computing risk difference using Sato method
-}
-\details{
-\insertCite{Sato1989;textual}{criskdiff}
+Computes Mantel-Haenszel estimate of the common risk difference with
+variance estimation according to \insertCite{Sato1989;textual}{criskdiff}.
 }
 \examples{
 data(myel)
@@ -25,4 +38,7 @@ criskdiff_sato(myel)
 }
 \references{
 \insertAllCited{}
+}
+\seealso{
+\code{\link[=convert_matrix_to_array]{convert_matrix_to_array()}}
 }

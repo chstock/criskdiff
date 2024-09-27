@@ -14,14 +14,15 @@ Description: Estimation and Inference for the Common Risk Difference in Stratifi
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.2
 Suggests: 
     spelling
 Language: en-US
 RdMacros: Rdpack
 Imports: 
     assertthat,
-    Rdpack
+    Rdpack,
+    stats
 Depends: 
     R (>= 2.10)
 LazyData: true

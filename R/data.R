@@ -1,14 +1,16 @@
+#' @title
 #' Myeloma dataset
 #'
-#' An array containing data from a randomized controlled trial used in 
+#' @description
+#' Data from a randomized controlled trial used in
 #' \insertCite{Klingenberg2014;textual}{criskdiff}.
-#' 
-#' The trial compared two chemotherapy treatments with respect to survival 
+#' The trial compared two chemotherapy treatments with respect to survival
 #' (alive or dead by the end of the study; i.e. a binary endpoint) in patients
-#' with multiple myeloma. 
+#' with multiple myeloma.
 #' It was was carried out in \eqn{K=21} institutions (strata), with an average
 #' of 7.4 patients per institution.
-#' 
+#'
+#'
 #' \describe{
 #'   \item{group}{First item}
 #'   \item{outcome}{Second item}
