@@ -21,6 +21,7 @@ Language: en-US
 RdMacros: Rdpack
 Imports: 
     assertthat,
+    PropCIs,
     Rdpack,
     stats
 Depends: 

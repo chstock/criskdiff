@@ -3,6 +3,7 @@
 export(convert_matrix_to_array)
 export(criskdiff_mh_klingenberg)
 export(criskdiff_mh_sato)
+export(mn_score)
 importFrom(Rdpack,reprompt)
 importFrom(assertthat,assert_that)
 importFrom(stats,pnorm)
