@@ -17,7 +17,7 @@ criskdiff_mh_sato(arr, alpha = 0.05)
 A numeric vector with the following elements:
 \itemize{
 \item \code{est} - the Mantel-Haenszel estimate of the common risk
-difference,
+difference (risk in group 1 (first row) minus risk in group 2
 \item \code{var} - the variance of \code{est},
 \item \code{se} - the standard error of \code{est},
 \item \code{lcl} - the lower \eqn{100(1-\alpha)\%}-confidence interval limit,
