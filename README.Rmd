@@ -36,5 +36,7 @@ remotes::install_github("chstock/criskdiff")
 ```{r example, echo=TRUE, eval=TRUE}
 library(criskdiff)
 data(myel)
-criskdiff_sato(myel)
+criskdiff_mh_sato(myel)
+criskdiff_mh_klingenberg(myel)
+criskdiff_score_mn(myel)
 ```
