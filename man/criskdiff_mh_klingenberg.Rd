@@ -18,19 +18,25 @@ A numeric vector with the following elements:
 \itemize{
 \item \code{est} - the Mantel-Haenszel estimate of the common risk
 difference,
-\item \code{var} - the variance of \code{est},
-\item \code{se} - the standard error of \code{est},
+\item \code{var} - the variance of \code{est}; \code{NA} for this method,
+\item \code{se} - the pseudo-standard error of \code{est},
 \item \code{lcl} - the lower \eqn{(1-\alpha)}-confidence interval limit,
 \item \code{ucl} - the upper \eqn{(1-\alpha)}-confidence interval limit,
 and
-\item \code{pval} - the p-value from the (two-sided) \emph{z}-test of
-\eqn{H_0:} risk difference \eqn{= 0} vs. risk difference \eqn{\ne 0}.
+\item \code{pval} - the p-value from the test of \eqn{H_0:} risk
+difference \eqn{= 0} vs. risk difference \eqn{\ne 0}; \code{NA} for this
+method.
 }
 }
 \description{
 Computes the Mantel-Haenszel estimate of the common risk difference with
 variance estimation according to
 \insertCite{Klingenberg2014;textual}{criskdiff}.
+}
+\details{
+The confidence interval may be advantageous when the distribution of risk
+differences is skewed. It is not symmetric around the Mantel-Haenszel
+estimate of the common risk difference.
 }
 \examples{
 data(myel)

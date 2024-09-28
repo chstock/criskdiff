@@ -16,14 +16,20 @@
 #'   \itemize{
 #'     \item \code{est} - the Mantel-Haenszel estimate of the common risk
 #'       difference,
-#'     \item \code{var} - the variance of \code{est},
-#'     \item \code{se} - the standard error of \code{est},
+#'     \item \code{var} - the variance of \code{est}; \code{NA} for this method,
+#'     \item \code{se} - the pseudo-standard error of \code{est},
 #'     \item \code{lcl} - the lower \eqn{(1-\alpha)}-confidence interval limit,
 #'     \item \code{ucl} - the upper \eqn{(1-\alpha)}-confidence interval limit,
 #'      and
-#'     \item \code{pval} - the p-value from the (two-sided) \emph{z}-test of
-#'       \eqn{H_0:} risk difference \eqn{= 0} vs. risk difference \eqn{\ne 0}.
+#'     \item \code{pval} - the p-value from the test of \eqn{H_0:} risk
+#'      difference \eqn{= 0} vs. risk difference \eqn{\ne 0}; \code{NA} for this
+#'      method.
 #'   }
+#'
+#' @details
+#' The confidence interval may be advantageous when the distribution of risk
+#' differences is skewed. It is not symmetric around the Mantel-Haenszel
+#' estimate of the common risk difference.
 #'
 #' @export
 #'
@@ -102,12 +108,13 @@ criskdiff_mh_klingenberg <- function(arr, alpha = 0.05) {
   ## Confidence interval
   lcl <- rho_midp_hat - me
   ucl <- rho_midp_hat + me
+  pseudo_se <- ((ucl - lcl)/2) / qnorm(1 - alpha / 2)
 
   # Return results
   return(c(
-    "est" = rho_midp_hat,
+    "est" = rho_mh_hat,
     "var" = NA,
-    "se" = me / qnorm(1 - alpha / 2), # <- to check
+    "se" = pseudo_se, #2 *me / (qnorm(1 - alpha / 2)), 
     "lcl" = lcl,
     "ucl" = ucl,
     "pval" = NA
