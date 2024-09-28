@@ -21,7 +21,12 @@
 #'   groups, defaults to `c("pbo", "act")`.
 #'
 #' @return
-#' A 3-dimensional array of stratified 2x2 tables.
+#' A 3-dimensional array of stratified 2x2 tables with binomial data obtained
+#' in two independent groups. 
+#' The first column of the table contains the outcome \code{y} (e.g. number of
+#' successes or responses) and the second column contains the number of trials
+#' \code{n} (e.g. the number of patients). Each row in the table represents a
+#' sample (e.g. a treatment group).
 #'
 #' @export
 #' @examples
