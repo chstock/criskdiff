@@ -29,13 +29,13 @@
 #' @references
 #'   \insertAllCited{}
 #'
-#' @seealso [convert_matrix_to_array()] and [criskdiff_klingenberg()].
+#' @seealso [convert_matrix_to_array()] and [criskdiff_mh_klingenberg()].
 #'
 #' @examples
 #' data(myel)
-#' criskdiff_sato(myel)
+#' criskdiff_mh_sato(myel)
 #'
-criskdiff_sato <- function(arr, alpha = 0.05) {
+criskdiff_mh_sato <- function(arr, alpha = 0.05) {
   # Check arguments
   assert_that(is.array(arr))
   assert_that(alpha > 0 & alpha < 1)
