@@ -58,14 +58,14 @@ criskdiff_mh_klingenberg <- function(arr, alpha = 0.05) {
   )
 
   ## Stratum specific risk differences
-  rho_hat <- apply(
+  delta_hat <- apply(
     X = arr,
     MARGIN = 3,
     FUN = function(m) (m[1, 1] / m[1, 2]) - (m[2, 1] / m[2, 2])
   )
   
   ## Common MH risk difference
-  rho_mh_hat <- sum(w * rho_hat) / sum(w)
+  delta_mh_hat <- sum(w * delta_hat) / sum(w)
 
   # Compute confidence interval following Klingenberg (2014)
 
@@ -98,24 +98,24 @@ criskdiff_mh_klingenberg <- function(arr, alpha = 0.05) {
     sum()
   
   ## Common mid-p risk difference
-  rho_midp_hat <-
-    rho_mh_hat + 0.5 * stats::qchisq(1 - alpha, df = 1) * (P / sum(w) ^ 2)
+  delta_midp_hat <-
+    delta_mh_hat + 0.5 * stats::qchisq(1 - alpha, df = 1) * (P / sum(w) ^ 2)
   
   ## Margin of error
   me <-
-    sqrt(rho_midp_hat ^ 2 - rho_mh_hat ^ 2 + stats::qchisq(1 - alpha, df = 1) *
+    sqrt(delta_midp_hat ^ 2 - delta_mh_hat ^ 2 + stats::qchisq(1 - alpha, df = 1) *
            Q / sum(w) ^ 2)
   
   ## Confidence interval
-  lcl <- rho_midp_hat - me
-  ucl <- rho_midp_hat + me
+  lcl <- delta_midp_hat - me
+  ucl <- delta_midp_hat + me
   pseudo_se <- ((ucl - lcl)/2) / qnorm(1 - alpha / 2)
 
   # Return results
   return(c(
-    "est" = rho_mh_hat,
+    "est" = delta_mh_hat,
     "var" = NA,
-    "se" = pseudo_se, #2 *me / (qnorm(1 - alpha / 2)), 
+    "se" = pseudo_se,
     "lcl" = lcl,
     "ucl" = ucl,
     "pval" = NA
