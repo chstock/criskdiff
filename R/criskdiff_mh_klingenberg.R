@@ -18,8 +18,8 @@
 #'       difference,
 #'     \item \code{var} - the variance of \code{est}; \code{NA} for this method,
 #'     \item \code{se} - the pseudo-standard error of \code{est},
-#'     \item \code{lcl} - the lower \eqn{(1-\alpha)}-confidence interval limit,
-#'     \item \code{ucl} - the upper \eqn{(1-\alpha)}-confidence interval limit,
+#'     \item \code{lcl} - the lower \eqn{100(1-\alpha)\%}-confidence interval limit,
+#'     \item \code{ucl} - the upper \eqn{100(1-\alpha)\%}-confidence interval limit,
 #'      and
 #'     \item \code{pval} - the p-value from the test of \eqn{H_0:} risk
 #'      difference \eqn{= 0} vs. risk difference \eqn{\ne 0}; \code{NA} for this
