@@ -39,7 +39,7 @@ criskdiff_mh_klingenberg(myel)
 ```
 
 ``` r
-criskdiff_score_mn(myel)
+criskdiff_score(myel)
 #           est          var           se          lcl          ucl         pval 
 #   0.032341403  0.003876782  0.062263807 -0.089693416  0.154376222           NA
 ```

@@ -38,5 +38,5 @@ library(criskdiff)
 data(myel)
 criskdiff_mh_sato(myel)
 criskdiff_mh_klingenberg(myel)
-criskdiff_score_mn(myel)
+criskdiff_score(myel)
 ```
