@@ -1,2 +1,4 @@
 *.tex linguist-language=R
 *.Rd linguist-language=R
+*.bib linguist-language=R
+*.csl linguist-language=R
