@@ -20,14 +20,15 @@
 #'       row)),
 #'     \item \code{var} - the variance of \code{est},
 #'     \item \code{se} - the standard error of \code{est},
-#'     \item \code{lcl} - the lower \eqn{100(1-\alpha)\%}-confidence interval limit,
-#'     \item \code{ucl} - the upper \eqn{100(1-\alpha)\%}-confidence interval limit,
-#'      and
+#'     \item \code{lcl} - the lower \eqn{100(1-\alpha)\%}-confidence interval
+#'     limit,
+#'     \item \code{ucl} - the upper \eqn{100(1-\alpha)\%}-confidence interval
+#'     limit, and
 #'     \item \code{pval} - the p-value from the (two-sided) test of
 #'       \eqn{H_0:} risk difference \eqn{= 0} vs. risk difference \eqn{\ne 0};
 #'       here \code{NA}.
 #'   }
-#' 
+#'
 #' @export
 #'
 #' @references
@@ -36,17 +37,17 @@
 #' @examples
 #' data(myel)
 #' criskdiff_score(myel)
-#' 
+#'
 criskdiff_score <- function(arr, alpha = 0.05) {
   # Check arguments
   assert_that(is.array(arr))
   assert_that(alpha > 0 & alpha < 1)
-  
+
   # Function to compute score-based confidence limits for one stratum
   score_mn <- function(mat) {
     # Check arguments
     assert_that(all(dim(mat) == c(2, 2)))
-    
+
     # Score interval for the risk difference in one stratum
     score_ci <- PropCIs::diffscoreci(
       x1 = mat[1, 1],
@@ -57,11 +58,11 @@ criskdiff_score <- function(arr, alpha = 0.05) {
     )$conf.int
     lcl <- score_ci[1]
     ucl <- score_ci[2]
-    
+
     # Additional quantities (to compute the summary score estimate)
     d_prime <- (ucl + lcl) / 2
     s_prime <- (ucl - lcl) / (2 * qnorm(alpha / 2))
-    
+
     # Return results
     return(c(
       "d_prime" = d_prime,
@@ -70,9 +71,9 @@ criskdiff_score <- function(arr, alpha = 0.05) {
       "ucl" = ucl,
       "alpha" = alpha
     ))
-    
+
   }
-  
+
   # Stratum-specific results
   stratum_riskdiffs <- apply(X = arr,
                              MARGIN = 3,
@@ -80,14 +81,14 @@ criskdiff_score <- function(arr, alpha = 0.05) {
     t()
   d_prime_h <- stratum_riskdiffs[, c("d_prime")]
   s_prime_h <- stratum_riskdiffs[, c("s_prime")]
-  
+
   # Summary score estimate
   w_prime_h <- (1 / s_prime_h ^ 2) / sum(1 / s_prime_h ^ 2)
   d_S <- sum(d_prime_h * w_prime_h)
   var_d_S <- 1 / sum(1 / s_prime_h ^ 2)
   lcl <- d_S + qnorm(alpha / 2) * sqrt(var_d_S)
   ucl <- d_S - qnorm(alpha / 2) * sqrt(var_d_S)
-  
+
   # Return results
   return(c(
     "est" = d_S,
@@ -97,5 +98,5 @@ criskdiff_score <- function(arr, alpha = 0.05) {
     "ucl" = ucl,
     "pval" = NA
   ))
-  
+
 }

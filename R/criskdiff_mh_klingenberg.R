@@ -19,9 +19,10 @@
 #'       second row)),
 #'     \item \code{var} - the variance of \code{est}; \code{NA} for this method,
 #'     \item \code{se} - the pseudo-standard error of \code{est},
-#'     \item \code{lcl} - the lower \eqn{100(1-\alpha)\%}-confidence interval limit,
-#'     \item \code{ucl} - the upper \eqn{100(1-\alpha)\%}-confidence interval limit,
-#'      and
+#'     \item \code{lcl} - the lower \eqn{100(1-\alpha)\%}-confidence interval
+#'     limit,
+#'     \item \code{ucl} - the upper \eqn{100(1-\alpha)\%}-confidence interval
+#'     limit, and
 #'     \item \code{pval} - the p-value from the test of \eqn{H_0:} risk
 #'      difference \eqn{= 0} vs. risk difference \eqn{\ne 0}; \code{NA} for this
 #'      method.
@@ -63,7 +64,7 @@ criskdiff_mh_klingenberg <- function(arr, alpha = 0.05) {
     MARGIN = 3,
     FUN = function(m) (m[1, 1] / m[1, 2]) - (m[2, 1] / m[2, 2])
   )
-  
+
   ## Common MH risk difference
   delta_mh_hat <- sum(w * delta_hat) / sum(w)
 
@@ -96,20 +97,20 @@ criskdiff_mh_klingenberg <- function(arr, alpha = 0.05) {
     }
   ) |>
     sum()
-  
+
   ## Common mid-p risk difference
   delta_midp_hat <-
     delta_mh_hat + 0.5 * stats::qchisq(1 - alpha, df = 1) * (P / sum(w) ^ 2)
-  
+
   ## Margin of error
   me <-
-    sqrt(delta_midp_hat ^ 2 - delta_mh_hat ^ 2 + stats::qchisq(1 - alpha, df = 1) *
-           Q / sum(w) ^ 2)
-  
+    sqrt(delta_midp_hat ^ 2 - delta_mh_hat ^ 2 +
+           stats::qchisq(1 - alpha, df = 1) * Q / sum(w) ^ 2)
+
   ## Confidence interval
   lcl <- delta_midp_hat - me
   ucl <- delta_midp_hat + me
-  pseudo_se <- ((ucl - lcl)/2) / qnorm(1 - alpha / 2)
+  pseudo_se <- ((ucl - lcl) / 2) / qnorm(1 - alpha / 2)
 
   # Return results
   return(c(
