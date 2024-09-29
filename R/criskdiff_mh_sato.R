@@ -1,12 +1,12 @@
 #' @title
-#' Common risk difference using the Sato method
+#' Common risk difference with variance estimation using the Sato method
 #'
 #' @description
 #' Computes the Mantel-Haenszel estimate of the common risk difference with
 #' variance estimation according to \insertCite{Sato1989;textual}{criskdiff}.
 #'
 #' @param arr Array with 3 dimensions containing 2x2 tables, as returned by
-#'    \code{\link{convert_matrix_to_array}()}
+#'    \code{\link{convert_matrix_to_array}()}.
 #' @param alpha Numeric of length 1, level \eqn{\alpha} to compute
 #'   \eqn{(1-\alpha)}-confidence intervals.
 #'
@@ -14,7 +14,8 @@
 #' A numeric vector with the following elements:
 #'   \itemize{
 #'     \item \code{est} - the Mantel-Haenszel estimate of the common risk
-#'       difference (risk in group 1 (first row) minus risk in group 2
+#'       difference (risk in group 1 (first row) minus risk in group 2 (second
+#'       row)),
 #'     \item \code{var} - the variance of \code{est},
 #'     \item \code{se} - the standard error of \code{est},
 #'     \item \code{lcl} - the lower \eqn{100(1-\alpha)\%}-confidence interval limit,

@@ -1,15 +1,32 @@
-#' Miettinen-Nurminen (Score) Confidence Limits for a Single Risk Difference
+#' @title
+#' Score-based common risk difference and interval estimation
 #'
 #' @description
-#' Computes score-based confidence limits for a single risk difference
-#' according to \insertCite{Miettinen1985;textual}{criskdiff}.
+#' Computes a score-based common risk difference estimate and confidence
+#' limits based on stratum risk differences estimated according to
+#' \insertCite{Miettinen1985;textual}{criskdiff} and
+#' \insertCite{Mee1984;textual}{criskdiff}.
 #'
-#' @param mat A 2x2 matrix
+#' @param arr Array with 3 dimensions containing 2x2 tables, as returned by
+#'    \code{\link{convert_matrix_to_array}()}.
 #' @param alpha Numeric of length 1, level \eqn{\alpha} to compute
 #'   \eqn{(1-\alpha)}-confidence intervals.
 #'
 #' @return
-#' A vector
+#' A numeric vector with the following elements:
+#'   \itemize{
+#'     \item \code{est} - the score-based estimate of the common risk
+#'       difference (risk in group 1 (first row) minus risk in group 2 (second
+#'       row)),
+#'     \item \code{var} - the variance of \code{est},
+#'     \item \code{se} - the standard error of \code{est},
+#'     \item \code{lcl} - the lower \eqn{100(1-\alpha)\%}-confidence interval limit,
+#'     \item \code{ucl} - the upper \eqn{100(1-\alpha)\%}-confidence interval limit,
+#'      and
+#'     \item \code{pval} - the p-value from the (two-sided) test of
+#'       \eqn{H_0:} risk difference \eqn{= 0} vs. risk difference \eqn{\ne 0};
+#'       here \code{NA}.
+#'   }
 #' 
 #' @export
 #'
@@ -18,15 +35,14 @@
 #'
 #' @examples
 #' data(myel)
-#' criskdiff_score_mn(myel)
+#' criskdiff_score(myel)
 #' 
-criskdiff_score_mn <- function(mat, alpha = 0.05) {
+criskdiff_score <- function(arr, alpha = 0.05) {
   # Check arguments
-  assert_that(is.array(mat))
+  assert_that(is.array(arr))
   assert_that(alpha > 0 & alpha < 1)
   
-  # Function to compute Miettinen-Nurminen (score) confidence limits
-  # for one stratum
+  # Function to compute score-based confidence limits for one stratum
   score_mn <- function(mat) {
     # Check arguments
     assert_that(all(dim(mat) == c(2, 2)))
@@ -58,7 +74,7 @@ criskdiff_score_mn <- function(mat, alpha = 0.05) {
   }
   
   # Stratum-specific results
-  stratum_riskdiffs <- apply(X = mat,
+  stratum_riskdiffs <- apply(X = arr,
                              MARGIN = 3,
                              FUN = score_mn) |>
     t()

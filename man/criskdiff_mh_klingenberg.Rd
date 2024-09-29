@@ -2,13 +2,13 @@
 % Please edit documentation in R/criskdiff_mh_klingenberg.R
 \name{criskdiff_mh_klingenberg}
 \alias{criskdiff_mh_klingenberg}
-\title{Common risk difference using the Klingenberg method}
+\title{Common risk difference with variance estimation using the Klingenberg method}
 \usage{
 criskdiff_mh_klingenberg(arr, alpha = 0.05)
 }
 \arguments{
 \item{arr}{Array with 3 dimensions containing 2x2 tables, as returned by
-\code{\link{convert_matrix_to_array}()}}
+\code{\link{convert_matrix_to_array}()}.}
 
 \item{alpha}{Numeric of length 1, level \eqn{\alpha} to compute
 \eqn{(1-\alpha)}-confidence intervals.}
