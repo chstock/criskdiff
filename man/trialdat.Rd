@@ -19,9 +19,9 @@ is a binary treatment indicator and column 5 (\code{y}) is the binary
 response endpoint.
 
 The marginal proportions are as follows:\tabular{ccc}{
-   Treatment \tab Count \tab Marginal proportion (\code{y}=1) \cr
-   \code{z = 0} \tab 30 \tab 0.23 \cr
-   \code{z = 1} \tab 60 \tab 0.55 \cr
+   Treatment \tab Count \tab \eqn{P(y = 1 | z)} \cr
+   \eqn{z = 0} \tab 30 \tab 0.23 \cr
+   \eqn{z = 1} \tab 60 \tab 0.55 \cr
 }
 }
 \keyword{datasets}

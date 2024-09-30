@@ -38,10 +38,10 @@ NULL
 #'
 #' The marginal proportions are as follows:
 #'
-#' | Treatment | Count | Marginal proportion (\code{y}=1) |
+#' | Treatment | Count | \eqn{P(y = 1 | z)} |
 #' | :-: | :-: | :-: |
-#' |  \code{z = 0}  |  30 | 0.23 |
-#' |  \code{z = 1}  |  60 | 0.55 |
+#' |  \eqn{z = 0}  |  30 | 0.23 |
+#' |  \eqn{z = 1}  |  60 | 0.55 |
 #'
 #' @docType data
 #' @keywords datasets
