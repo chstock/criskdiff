@@ -27,6 +27,7 @@
 #' sample (e.g. a treatment group).
 #'
 #' @export
+#' 
 #' @examples
 #' data(trialdat)
 #' dat <- trialdat
@@ -84,8 +85,12 @@ convert_ipd_to_array <-
       # Store the results in the matrix
       result_matrix[i, ] <- c(y1, n1, y2, n2)
     }
-
+    
+    # Convert to 3-dimensional array
+    arr <- result_matrix|>
+         convert_aggregated_matrix_to_array()
+    
     # Return array
-    return(result_matrix)
+    return(arr)
 
   }
