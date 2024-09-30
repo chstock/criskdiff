@@ -34,7 +34,7 @@
 #'   endpoint = "y"
 #' )
 #' arr
-#' 
+#'
 convert_ipd_to_array <-
   function(data,
            stratification,
@@ -46,42 +46,42 @@ convert_ipd_to_array <-
     assert_that(all(c(stratification, treatment, endpoint) %in% colnames(data)))
     assert_that(is.character(group_names))
     assert_that(length(group_names) == 2)
-    
+
     # Stratification variable
     data$strat <- data[, stratification, drop = FALSE] |>
       interaction() |>
       factor() |>
       as.integer()
     strat_levels <- unique(data$strat)
-    
+
     # Subset
     data <- data[, c("strat", treatment, endpoint)]
-    
+
     # Initialize the result matrix
     result_matrix <-
       matrix(0, nrow = length(strat_levels), ncol = 4)
     colnames(result_matrix) <- c("y1", "n1", "y2", "n2")
-    
+
     # Loop through each stratum
     for (i in seq_along(strat_levels)) {
       strat_value <- strat_levels[i]
-      
+
       # Subset data for the current stratum
-      subset_data <- data[data$strat == strat_value,]
-      
+      subset_data <- data[data$strat == strat_value, ]
+
       # Calculate counts for treatment z = 0
       y1 <- sum(subset_data$y[subset_data$z == 0])
       n1 <- sum(subset_data$z == 0)
-      
+
       # Calculate counts for treatment z = 1
       y2 <- sum(subset_data$y[subset_data$z == 1])
       n2 <- sum(subset_data$z == 1)
-      
+
       # Store the results in the matrix
-      result_matrix[i,] <- c(y1, n1, y2, n2)
+      result_matrix[i, ] <- c(y1, n1, y2, n2)
     }
-    
+
     # Return array
     return(result_matrix)
-    
+
   }

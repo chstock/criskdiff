@@ -6,8 +6,7 @@ mat <- read.table(
 ) |>
   as.matrix()
 
-myel <- convert_aggregated_matrix_to_array(
-  mat,
-  group_names = c("group1", "group2"))
+myel <- convert_aggregated_matrix_to_array(mat,
+                                           group_names = c("group1", "group2"))
 
 usethis::use_data(myel, overwrite = TRUE)
