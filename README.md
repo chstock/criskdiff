@@ -22,6 +22,12 @@ if (!require("remotes")) install.packages("remotes")
 remotes::install_github("chstock/criskdiff")
 ```
 
+## Scope
+
+The package collates functions to be used in simulations of clinical
+trials with binary endpoints and corresponding analytical approaches
+that consider stratification factors.
+
 ## Getting started
 
 ``` r

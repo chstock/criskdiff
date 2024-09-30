@@ -36,7 +36,7 @@ NULL
 #' is a binary treatment indicator and column 5 (\code{y}) is the binary
 #' response endpoint.
 #'
-#' The marginal proportions are as follows:
+#' The marginal sample proportions are as follows:
 #'
 #' | Treatment | Count | \eqn{P(y = 1 | z)} |
 #' | :-: | :-: | :-: |

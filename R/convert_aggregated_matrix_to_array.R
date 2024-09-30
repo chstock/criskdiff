@@ -1,11 +1,12 @@
 #' @title
-#' Convert matrix to 3-dimensional array
+#' Convert aggregated 2-dimensional matrix to 3-dimensional array
 #'
 #' @description
 #' An auxiliary function to preprocess binomial data collected in 2 groups
-#' across different strata, and represented in a 2-dimensional matrix.
-#' It returns a 3-dimensional array that is the required input format for
-#' other package functions that estimate common risk differences.
+#' across different strata. The input data are \emph{aggregated} at the
+#' stratum-level and are given in a 2-dimensional matrix. The function returns
+#' a 3-dimensional array that is the required input format for other package
+#' functions that estimate common risk differences.
 #'
 #' @param mat Matrix with 4 columns.
 #' Each row contains the data collected in a stratum; hence the number of rows
@@ -38,11 +39,11 @@
 #'   byrow = TRUE,
 #'   ncol = 4
 #' ) |>
-#'   convert_matrix_to_array()
+#'   convert_aggregated_matrix_to_array()
 #'
-convert_matrix_to_array <-
+convert_aggregated_matrix_to_array <-
   function(mat, group_names = c("pbo", "act")) {
-    # check arguments
+    # Check arguments
     assert_that(is.matrix(mat))
     assert_that(is.character(group_names))
     assert_that(length(group_names) == 2)
@@ -54,7 +55,7 @@ convert_matrix_to_array <-
              byrow = TRUE)
     }
 
-    # convert matrix to array
+    # Convert matrix to array
     arr <-  array(
       data = unlist(apply(mat, 1, convert_to_2x2_mat)),
       dim = c(2, 2, nrow(mat)),
@@ -65,7 +66,7 @@ convert_matrix_to_array <-
       )
     )
 
-    # return array
+    # Return array
     return(arr)
 
   }
