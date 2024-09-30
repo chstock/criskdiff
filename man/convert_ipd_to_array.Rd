@@ -16,6 +16,13 @@ convert_ipd_to_array(
 \item{data}{Data frame containing a stratification variable (factor),
 a treatment indicator variable (binary) and an endpoint variable (binary).}
 
+\item{stratification}{Character vector, names of stratification
+variables.}
+
+\item{treatment}{Character of length 1, name of treatment variable.}
+
+\item{endpoint}{Character of length 1, name of endpoint variable.}
+
 \item{group_names}{Character of length 2, indicating names of treatment
 groups, defaults to \code{c("pbo", "act")}.}
 }

@@ -8,7 +8,8 @@
 #' \insertCite{Mee1984;textual}{criskdiff}.
 #'
 #' @param arr Array with 3 dimensions containing 2x2 tables, as returned by
-#'    \code{\link{convert_matrix_to_array}()}.
+#'    \code{\link{convert_aggregated_matrix_to_array}()} or
+#'    \code{\link{convert_ipd_to_array}()}.
 #' @param alpha Numeric of length 1, level \eqn{\alpha} to compute
 #'   \eqn{(1-\alpha)}-confidence intervals.
 #'
@@ -30,7 +31,11 @@
 #'   }
 #'
 #' @export
-#'
+#' 
+#' @seealso [convert_aggregated_matrix_to_array()], 
+#'  [criskdiff_mh_sato()] and
+#'  [criskdiff_mh_klingenberg()].
+#'  
 #' @references
 #'   \insertAllCited{}
 #'

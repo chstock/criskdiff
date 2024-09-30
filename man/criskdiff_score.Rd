@@ -8,7 +8,8 @@ criskdiff_score(arr, alpha = 0.05)
 }
 \arguments{
 \item{arr}{Array with 3 dimensions containing 2x2 tables, as returned by
-\code{\link{convert_matrix_to_array}()}.}
+\code{\link{convert_aggregated_matrix_to_array}()} or
+\code{\link{convert_ipd_to_array}()}.}
 
 \item{alpha}{Numeric of length 1, level \eqn{\alpha} to compute
 \eqn{(1-\alpha)}-confidence intervals.}
@@ -43,4 +44,9 @@ criskdiff_score(myel)
 }
 \references{
 \insertAllCited{}
+}
+\seealso{
+\code{\link[=convert_aggregated_matrix_to_array]{convert_aggregated_matrix_to_array()}},
+\code{\link[=criskdiff_mh_sato]{criskdiff_mh_sato()}} and
+\code{\link[=criskdiff_mh_klingenberg]{criskdiff_mh_klingenberg()}}.
 }

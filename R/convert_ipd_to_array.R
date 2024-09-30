@@ -11,6 +11,10 @@
 #'
 #' @param data Data frame containing a stratification variable (factor),
 #'   a treatment indicator variable (binary) and an endpoint variable (binary).
+#' @param stratification Character vector, names of stratification
+#'   variables.
+#' @param treatment Character of length 1, name of treatment variable. 
+#' @param endpoint Character of length 1, name of endpoint variable.
 #' @param group_names Character of length 2, indicating names of treatment
 #'   groups, defaults to `c("pbo", "act")`.
 #'
